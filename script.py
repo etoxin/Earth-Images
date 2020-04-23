@@ -12,9 +12,9 @@ for url in urls:
     try:
         print('Checking: ' + url[0])
         r = requests.get(url[0], allow_redirects=True)
-        open(url[1], 'wb').write(r.content)
         r.raise_for_status()
     except HTTPError:
         print('Could not download image')
     else:
+        open(url[1], 'wb').write(r.content)
         print(r.url, 'downloaded image successfully')
